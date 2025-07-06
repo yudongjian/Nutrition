@@ -1,6 +1,6 @@
-# Spatial-Aware Multi-Modal Information Fusion for Food Nutrition Estimation
 
-🎉 This work was accepted in ACM TOMM 2025!
+
+# 🎉 This work was accepted in ACM TOMM 2025!
 
 ---
 
