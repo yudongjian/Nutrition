@@ -1,16 +1,20 @@
-
 # Spatial-Aware Multi-Modal Information Fusion for Food Nutrition Estimation
 
-🎉 This work was accepted in ACM MM 2025!
+🎉 This work was accepted in ACM TOMM 2025!
 
 ---
 
 ## 🧾 Paper Information
 
-**Spatial-Aware Multi-Modal Information Fusion for Food Nutrition Estimation**  
-Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²  
-¹Yunnan University  
-²Key Laboratory of Intelligent Information Processing, Institute of Computing Technology, Chinese Academy of Sciences
+**Spatial-Aware Multi-Modal Information Fusion for Food Nutrition Estimation**
+
+| 作者          | 机构                                                         |
+| ------------- | ------------------------------------------------------------ |
+| Dongjian Yu   | Yunnan University                                            |
+| Weiqing Min   | Key Laboratory of Intelligent Information Processing, Institute of Computing Technology, Chinese Academy of Sciences |
+| Xin Jin       | Yunnan University                                            |
+| Qian Jiang    | Yunnan University                                            |
+| Shuqiang Jiang| Key Laboratory of Intelligent Information Processing, Institute of Computing Technology, Chinese Academy of Sciences |
 
 ---
 
