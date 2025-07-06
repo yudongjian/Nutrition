@@ -14,7 +14,7 @@
 
 <p align="center" style="font-size:small;">
 
-Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Ying Jin², Shuqiang Jiang²
+Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²
 
 </p>
 
