@@ -1,6 +1,6 @@
 
 
-# 🎉 This work was accepted in ACM TOMM 2025!
+# 🎉 This work was accepted in ACM MM 2025!
 
 ---
 
