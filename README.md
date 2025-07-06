@@ -1,5 +1,3 @@
-# Nutrition
-For food nutrition assessment.
 
 # Spatial-Aware Multi-Modal Information Fusion for Food Nutrition Estimation
 
