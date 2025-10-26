@@ -48,20 +48,20 @@ Stay tuned and thank you for your patience!
 
 ```bash
 @inproceedings{10.1145/3746027.3755750,
-author = {Yu, Dongjian and Min, Weiqing and Jin, Xin and Jiang, Qian and Jiang, Shuqiang},
-title = {Spatial-Aware Multi-Modal Information Fusion for Food Nutrition Estimation},
-year = {2025},
-isbn = {9798400720352},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3746027.3755750},
-doi = {10.1145/3746027.3755750},
-booktitle = {Proceedings of the 33rd ACM International Conference on Multimedia},
-pages = {8863–8871},
-numpages = {9},
-keywords = {deep learning, food computing, food nutrients estimation, multi-modal fusion},
-location = {Dublin, Ireland},
-series = {MM '25}
+    author = {Yu, Dongjian and Min, Weiqing and Jin, Xin and Jiang, Qian and Jiang, Shuqiang},
+    title = {Spatial-Aware Multi-Modal Information Fusion for Food Nutrition Estimation},
+    year = {2025},
+    isbn = {9798400720352},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3746027.3755750},
+    doi = {10.1145/3746027.3755750},
+    booktitle = {Proceedings of the 33rd ACM International Conference on Multimedia},
+    pages = {8863–8871},
+    numpages = {9},
+    keywords = {deep learning, food computing, food nutrients estimation, multi-modal fusion},
+    location = {Dublin, Ireland},
+    series = {MM '25}
 }
 ```
 
