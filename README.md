@@ -37,9 +37,14 @@ Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²
 [[📄 Paper Link]](https://doi.org/10.1145/3746027.3755750)  
 
 ## 🚧 Code Release Notice
-
+We recommend using the 2D-only version, as it runs significantly faster while still achieving competitive performance.
+The 3D-enhanced version provides additional spatial cues but incurs higher computational cost.
 ```bash
+# Train the model without 3D information (2D-only, recommended)
+python train2D-mm.py --b 8 --log ./logs/log1  
 
+or
+# Train the model with 3D information
 python train2D-mm.py --b 8 --log ./logs/log1
 ```
 
