@@ -30,7 +30,7 @@ Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²
 
 </p>
 
-
+Please feel free to contact me at yudongjian@stu.ynu.edu.cn if you have any questions.
 
 ## 📄 Paper Link
 
