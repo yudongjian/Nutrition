@@ -41,6 +41,8 @@ Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²
 ```bash
 
 python train2D-mm.py --b 8 --log ./logs/log1
+```
+
 
 ## 📚 Reference
 
