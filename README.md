@@ -36,6 +36,15 @@ Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²
 
 [[📄 Paper Link]](https://doi.org/10.1145/3746027.3755750)  
 
+## Prerequisite Step
+
+Before using this project, please download the pre-trained weight files:
+
+[Download weights here](https://drive.google.com/drive/folders/1i-AExbFDi4cLy_OPYUmGm_q5f8EITpjJ?usp=drive_link)
+
+After downloading, place the files in the `pth/` and  `point-transformer/` folder of the project (create the folder if it doesn't exist).
+
+
 ## 🚧 Code Release Notice
 We recommend using the 2D-only version, as it runs significantly faster while still achieving competitive performance.
 The 3D-enhanced version provides additional spatial cues but incurs higher computational cost.
