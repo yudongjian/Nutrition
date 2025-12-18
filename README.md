@@ -40,10 +40,10 @@ Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²
 
 Before using this project, please download the pre-trained weight files:
 
-[Download weights here](https://drive.google.com/drive/folders/1i-AExbFDi4cLy_OPYUmGm_q5f8EITpjJ?usp=drive_link)
+[Download CLIP, Swin-Transforemer, ConvNext, Point-Transformer here](https://drive.google.com/drive/folders/1i-AExbFDi4cLy_OPYUmGm_q5f8EITpjJ?usp=drive_link)
 
 After downloading, place the files in the `pth/` and  `point-transformer/` folder of the project (create the folder if it doesn't exist).
-
+[Download DINO-V2 here](https://huggingface.co/facebook/dinov2-base/tree/main)
 
 ## 🚧 Code Release Notice
 We recommend using the 2D-only version, as it runs significantly faster while still achieving competitive performance.
