@@ -5,7 +5,7 @@ import torch
 from torchvision import transforms
 from torch.utils.data import DataLoader, RandomSampler, DistributedSampler, SequentialSampler
 from torchvision.transforms.transforms import CenterCrop
-from mydataset import Nutrition_RGBD, Nutrition_RGB_Pre_D, Nutrition8k, Nutrition11w
+from mydataset import Nutrition_RGBD
 import pdb
 
 def get_DataLoader(args):
