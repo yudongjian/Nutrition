@@ -172,7 +172,7 @@ def clipresnet101():
                     input_resolution=image_resolution,
                     width=vision_width
                 )
-    BaseheadNet_dir = "/home/image1325_user/ssd_disk4/yudongjian_23/food-nurtrition/pth/clip_vit/clip_resnet101.pth"
+    BaseheadNet_dir = "./pth/clip_vit/clip_resnet101.pth"
     BaseheadNet_name = "clip_resnet101"
     # load BaseheadNet weight
     try:
