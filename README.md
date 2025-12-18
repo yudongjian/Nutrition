@@ -31,17 +31,16 @@ Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²
 </p>
 
 
-## 🚧 Code Release Notice
-
-# The code for this project will be publicly available soon.  
-Stay tuned and thank you for your patience!
-
----
 
 ## 📄 Paper Link
 
 [[📄 Paper Link]](https://doi.org/10.1145/3746027.3755750)  
 
+## 🚧 Code Release Notice
+
+```bash
+
+python train2D-mm.py --b 8 --log ./logs/log1
 
 ## 📚 Reference
 
