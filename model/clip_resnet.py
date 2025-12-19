@@ -157,7 +157,7 @@ class ModifiedResNet(nn.Module):
         return [feat1, feat2, feat3, x]
     
 
-def clipresnet101():
+def clipresnet101(clip_file):
     vision_layers = (3, 4, 23, 3)
     embed_dim = 512
     vision_heads = 32
@@ -172,16 +172,14 @@ def clipresnet101():
                     input_resolution=image_resolution,
                     width=vision_width
                 )
-    BaseheadNet_dir = "./pth/clip_vit/clip_resnet101.pth"
+    BaseheadNet_dir = clip_file
     BaseheadNet_name = "clip_resnet101"
     # load BaseheadNet weight
-    try:
-        BaseheadNet_weight_path = BaseheadNet_dir
-        BaseheadNet_state_dict = torch.load(BaseheadNet_weight_path, map_location='cpu')
-        visualbackbone.load_state_dict(BaseheadNet_state_dict)
-        print('{} weight-loading succeeds: {}'.format(BaseheadNet_name, BaseheadNet_weight_path))
-    except:
-        print('{} weight-loading fails'.format(BaseheadNet_name))
+    BaseheadNet_weight_path = BaseheadNet_dir
+    BaseheadNet_state_dict = torch.load(BaseheadNet_weight_path, map_location='cpu')
+    visualbackbone.load_state_dict(BaseheadNet_state_dict)
+    print('{} weight-loading succeeds: {}'.format(BaseheadNet_name, BaseheadNet_weight_path))
+
     return visualbackbone
 
 if __name__ == "__main__":
