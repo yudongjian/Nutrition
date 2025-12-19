@@ -47,12 +47,12 @@ After downloading, place the files in the `pth/` and  `point-transformer/` folde
 
 ## Prerequisites Step 2
 
-For training the 2D and 3D models, you need to set the paths to the pre-trained weights in advance.
+For training the 2D and 3D models, you need to set the paths to the pre-trained weights in advance. If you only want to use one model, you only need to set the corresponding pre-trained weight path.
 
 - **2D training**:  
   In `train2D-mm.py`, please configure the following paths:
-  - `clip_path`
-  - `pth_path` (for **Swin-T** and **ConvNeXt** pre-trained weights)
+  - `clip_path` (located at **line 81**).
+  - `pth_path` (for **Swin-T** and **ConvNeXt** pre-trained weights) (located at **line 94**).
   In `model/three_D.py`, please set the path to the **DINO** pre-trained weights (located at **line 174**).
 - **3D training**:  
   In `train2D-mm.py`, please configure the following paths:
