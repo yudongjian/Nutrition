@@ -38,7 +38,7 @@ Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²
 
 ## Prerequisite Step 1
 
-Before using this project, please download the pre-trained weight files:
+Before using this project, please download the pre-trained weight files:  你首先需要下载预训练的权重文件：
 
 [Download CLIP, Swin-Transforemer, ConvNext, Point-Transformer here](https://drive.google.com/drive/folders/1i-AExbFDi4cLy_OPYUmGm_q5f8EITpjJ?usp=drive_link)
 
@@ -48,7 +48,7 @@ After downloading, place the files in the `pth/` and  `point-transformer/` folde
 ## Prerequisites Step 2
 
 For training the 2D and 3D models, you need to set the paths to the pre-trained weights in advance. If you only want to use one model, you only need to set the corresponding pre-trained weight path.
-
+对于2D 和 3D，你使用任何一个你就设置任何一个即可。
 - **2D training**:  
   In `train2D-mm.py`, please configure the following paths:
   - `clip_path` (located at **line 81**).
@@ -66,6 +66,7 @@ For training the 2D and 3D models, you need to set the paths to the pre-trained 
 ## 🚧 Code Release Notice
 We recommend using the 2D-only version, as it runs significantly faster while still achieving competitive performance.
 The 3D-enhanced version provides additional spatial cues but incurs higher computational cost.
+2D 和 3D 任选一个即可， 这里推荐你选择2D, 因为开销会低一些。效果也很不错的。
 ```bash
 # Train the model without 3D information (2D-only, recommended)
 python train2D-mm.py --b 8 --log ./logs/log1  
