@@ -36,7 +36,7 @@ Dongjian Yu¹, Weiqing Min², Xin Jin¹, Qian Jiang¹, Shuqiang Jiang²
 
 [[📄 Paper Link]](https://doi.org/10.1145/3746027.3755750)  
 
-## Prerequisite Step
+## Prerequisite Step 1
 
 Before using this project, please download the pre-trained weight files:
 
@@ -44,6 +44,24 @@ Before using this project, please download the pre-trained weight files:
 
 After downloading, place the files in the `pth/` and  `point-transformer/` folder of the project (create the folder if it doesn't exist).
 [Download DINO-V2 here](https://huggingface.co/facebook/dinov2-base/tree/main)
+
+## Prerequisites Step 2
+
+For training the 2D and 3D models, you need to set the paths to the pre-trained weights in advance.
+
+- **2D training**:  
+  In `train2D-mm.py`, please configure the following paths:
+  - `clip_path`
+  - `pth_path` (for **Swin-T** and **ConvNeXt** pre-trained weights)
+  In `model/three_D.py`, please set the path to the **DINO** pre-trained weights (located at **line 174**).
+- **3D training**:  
+  In `train2D-mm.py`, please configure the following paths:
+  - `clip_path`  (located at **line 81**).
+  - `pth_path` (for **Swin-T** and **ConvNeXt** pre-trained weights) (located at **line 94**).
+  - `checkpoint` (for **Point Transformer** ) (located at **line 131**).
+  In `model/three_D.py`, please set the path to the **DINO** pre-trained weights (located at **line 174**).
+
+
 
 ## 🚧 Code Release Notice
 We recommend using the 2D-only version, as it runs significantly faster while still achieving competitive performance.
