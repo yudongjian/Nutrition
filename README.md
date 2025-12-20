@@ -47,15 +47,10 @@ After downloading, place the files in the `pth/` and  `point-transformer/` folde
 
 ## Prerequisites Step 2
 
-For training the 2D and 3D models, you need to set the paths to the pre-trained weights in advance. If you only want to use one model, you only need to set the corresponding pre-trained weight path.
-对于2D 和 3D，你使用任何一个你就设置任何一个即可。
-- **2D training**:  
-  In `train2D-mm.py`, please configure the following paths:
-  - `clip_path` (located at **line 81**).
-  - `pth_path` (for **Swin-T** and **ConvNeXt** pre-trained weights) (located at **line 94**).
-  In `model/three_D.py`, please set the path to the **DINO** pre-trained weights (located at **line 174**).
+For training the 3D models, you need to set the paths to the pre-trained weights in advance.  You need to set the corresponding pre-trained weight path.
+
 - **3D training**:  
-  In `train2D-mm.py`, please configure the following paths:
+  In `train3D-mm.py`, please configure the following paths:
   - `clip_path`  (located at **line 81**).
   - `pth_path` (for **Swin-T** and **ConvNeXt** pre-trained weights) (located at **line 94**).
   - `checkpoint` (for **Point Transformer** ) (located at **line 131**).
@@ -64,14 +59,8 @@ For training the 2D and 3D models, you need to set the paths to the pre-trained 
 
 
 ## 🚧 Code Release Notice
-We recommend using the 2D-only version, as it runs significantly faster while still achieving competitive performance.
-The 3D-enhanced version provides additional spatial cues but incurs higher computational cost.
-2D 和 3D 任选一个即可， 这里推荐你选择2D, 因为开销会低一些。效果也很不错的。
-```bash
-# Train the model without 3D information (2D-only, recommended)
-python train2D-mm.py --b 8 --log ./logs/log1  
-
-or
+generate 3D food point cloud
+python pre_process2.py  
 # Train the model with 3D information
 python train2D-mm.py --b 8 --log ./logs/log1
 ```
