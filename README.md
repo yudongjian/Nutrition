@@ -60,8 +60,11 @@ For training the 3D models, you need to set the paths to the pre-trained weights
 
 ## 🚧 Code Release Notice
 generate 3D food point cloud
-python pre_process2.py  
+```bash
+python pre_process2.py
+```
 # Train the model with 3D information
+```bash
 python train2D-mm.py --b 8 --log ./logs/log1
 ```
 
