@@ -65,7 +65,7 @@ python pre_process2.py
 ```
 # Train the model with 3D information
 ```bash
-python train2D-mm.py --b 8 --log ./logs/log1
+python train3D-mm.py --b 8 --log ./logs/log1
 ```
 
 
