@@ -71,7 +71,7 @@ python train3D-mm.py --b 8 --log ./logs/log1
 ```bash
 python test.py --ckpt ./***/ckpt_best.pth
 ```
-<img src="./imageshow_result2.png" width="600">
+<img src="./image/show_result2.png" width="600">
 
 ## 📚 Reference
 
