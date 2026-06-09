@@ -51,9 +51,9 @@ For training the 3D models, you need to set the paths to the pre-trained weights
 
 - **3D training**:  
   In `train3D-mm.py`, please configure the following paths:
-  - `clip_path`  (located at **line 81**).
-  - `pth_path` (for **Swin-T** and **ConvNeXt** pre-trained weights) (located at **line 94**).
-  - `checkpoint` (for **Point Transformer** ) (located at **line 131**).
+  - `clip_path`  
+  - `pth_path` (for **Swin-T** and **ConvNeXt** pre-trained weights) 
+  - `checkpoint` (for **Point Transformer** ) 
   In `model/three_D.py`, please set the path to the **DINO** pre-trained weights (located at **line 174**).
 
 
@@ -63,11 +63,15 @@ generate 3D food point cloud
 ```bash
 python pre_process2.py
 ```
-# Train the model with 3D information
+# Train the model 
 ```bash
 python train3D-mm.py --b 8 --log ./logs/log1
 ```
-
+# Test the model 
+```bash
+python test.py --ckpt ./***/ckpt_best.pth
+```
+<img src="./imageshow_result2.png" width="600">
 
 ## 📚 Reference
 
