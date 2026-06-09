@@ -67,7 +67,7 @@ python pre_process2.py
 ```bash
 python train3D-mm.py --b 8 --log ./logs/log1
 ```
-** The trained model weights can be downloaded from the following link: **
+### The trained model weights can be downloaded from the following link: 
 [Download Checkpoint](https://huggingface.co/dongjianjjjj/Spatial-Aware-Nutrition-Estimation/tree/main)
 
 # Test the model 
