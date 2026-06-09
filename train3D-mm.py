@@ -37,6 +37,18 @@ from thop import profile
 from thop import clever_format
 # CUDA_LAUNCH_BLOCKING=1
 
+import argparse
+import shutil
+def backup_self(save_dir="backup"):
+    """
+    将当前脚本文件复制到指定文件夹
+    """
+    current_file = os.path.abspath(__file__)
+    os.makedirs(save_dir, exist_ok=True)
+    target_file = os.path.join(save_dir, "demo_copy.py")
+    shutil.copy(current_file, target_file)
+    print(f"代码已保存到: {target_file}")
+
 def count_parameters(model):
     params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     return params / 1000000
@@ -82,10 +94,16 @@ clip_path = "/home/image1325_user/ssd_disk4/yudongjian_23/food-nurtrition/pth/cl
 image_clip = clipresnet101(clip_path)
 # -------------------
 
+# pre_net1 = FeatureFusionNetwork222(dropout=0.15)
+# pre_net2 = FeatureFusionNetwork222(dropout=0.15)
+# pre_net3 = FeatureFusionNetwork222(dropout=0.15)
+# pre_net4 = FeatureFusionNetwork222(dropout=0.15)
+# pre_net5 = FeatureFusionNetwork222(dropout=0.15)
+
 pre_net1 = FeatureFusionNetwork222(dropout=0.1)
 pre_net2 = FeatureFusionNetwork222(dropout=0.1)
 pre_net3 = FeatureFusionNetwork222(dropout=0.1)
-pre_net4 = FeatureFusionNetwork222(dropout=0.05)
+pre_net4 = FeatureFusionNetwork222(dropout=0.5)
 pre_net5 = FeatureFusionNetwork222(dropout=0.1)
 
 task_prior = DynamicTaskPrioritization(alpha=0.3)
@@ -161,6 +179,7 @@ optimizer = torch.optim.Adam([
 ])
 
 scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=100, eta_min=2e-6)
+scheduler2 = torch.optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.95)
 
 
 # gradnorm
@@ -187,6 +206,7 @@ def train(epoch, net):
     net_cat.train()
 
     train_loss = 0
+    real_train_loss = 0
     calories_loss = 0
     mass_loss = 0
     fat_loss = 0
@@ -261,6 +281,7 @@ def train(epoch, net):
         global_step += 1
 
         train_loss += loss.item()
+        real_train_loss += loss22.item()
         calories_loss += total_calories_loss.item()
         mass_loss += total_mass_loss.item()
         fat_loss += total_fat_loss.item()
@@ -269,13 +290,14 @@ def train(epoch, net):
 
         if (batch_idx % 100) == 0:
             print(
-                "\nTraining Epoch[%d] | loss=%2.5f | calorieloss=%2.5f | massloss=%2.5f| fatloss=%2.5f | carbloss=%2.5f | proteinloss=%2.5f | lr: %f" % (
-                    epoch, train_loss / (batch_idx + 1), calories_loss / (batch_idx + 1), mass_loss / (batch_idx + 1),
+                "\nTraining Epoch[%d] | real_loss=%2.5f | loss=%2.5f | calorieloss=%2.5f | massloss=%2.5f| fatloss=%2.5f | carbloss=%2.5f | proteinloss=%2.5f | lr: %f" % (
+                    epoch, real_train_loss / (batch_idx + 1), train_loss / (batch_idx + 1), calories_loss / (batch_idx + 1), mass_loss / (batch_idx + 1),
                     fat_loss / (batch_idx + 1), carb_loss / (batch_idx + 1), protein_loss / (batch_idx + 1),
                     optimizer.param_groups[0]['lr']))
 
         if (batch_idx + 1) % 100 == 0 or batch_idx + 1 == len(trainloader):
             logtxt(log_file_path, 'Epoch: [{}][{}/{}]\t'
+                                  'Real_loss: {:2.5f} \t'
                                   'Loss: {:2.5f} \t'
                                   'calorieloss: {:2.5f} \t'
                                   'massloss: {:2.5f} \t'
@@ -284,6 +306,7 @@ def train(epoch, net):
                                   'proteinloss: {:2.5f} \t'
                                   'lr:{:2.5f}-{:2.5f}-{:2.5f}-{:2.5f}'.format(
                 epoch, batch_idx + 1, len(trainloader),
+                       real_train_loss / (batch_idx + 1),
                        train_loss / (batch_idx + 1),
                        calories_loss / (batch_idx + 1),
                        mass_loss / (batch_idx + 1),
@@ -295,9 +318,9 @@ def train(epoch, net):
                 optimizer.param_groups[2]['lr'],
                 optimizer.param_groups[3]['lr']))
 
-        if (batch_idx + 1) % 50 == 0 or batch_idx + 1 == len(trainloader):
-            current_kpis = torch.tensor([calories_loss / (batch_idx + 1), mass_loss / (batch_idx + 1),mass_loss / (batch_idx + 1),
-                                         carb_loss / (batch_idx + 1), protein_loss / (batch_idx + 1)])
+        if (batch_idx + 1) % 100 == 0 or batch_idx + 1 == len(trainloader):
+            current_kpis = torch.tensor([calories_loss / (batch_idx + 1), mass_loss / (batch_idx + 1), mass_loss / (batch_idx + 1),
+                                             carb_loss / (batch_idx + 1), protein_loss / (batch_idx + 1)])
             task_prior.update_weights(current_kpis)
             print(task_prior.task_weights)
 
@@ -309,6 +332,14 @@ def test(epoch, net):
         net.eval()
         net2.eval()
         net_cat.eval()
+
+        net_point.eval()
+
+        pre_net1.eval()
+        pre_net2.eval()
+        pre_net3.eval()
+        pre_net4.eval()
+        pre_net5.eval()
 
         calories_ae = 0
         mass_ae = 0
@@ -435,20 +466,30 @@ def test(epoch, net):
             savepath = f"./saved/{args.log}"
             check_dirs(savepath)
             torch.save(state, os.path.join(savepath, f"ckpt_best.pth"))
-
+            
+            global min_epoch
+            min_epoch = epoch
+            logtxt(log_file_path, "= = =  ↑ ↑ ↑ ↑ ↑ ↑ ↑ = = = ")
+            logtxt(log_file_path, "======  Min  ===================")
 # pdb.set_trace()
 log_file_path = os.path.join(args.log, "train_log.txt")
 check_dirs(args.log)
 logtxt(log_file_path, str(vars(args)))
 
 # 150 是epoch
+logtxt(log_file_path, "\n======================================================\n")
+global min_epoch
+backup_self(args.log)
 for epoch in range(start_epoch, 150):
     if epoch > 150:
         task_prior.task_weights = torch.ones(5, requires_grad=False)
-
     train(epoch, net)
     test(epoch, net)
-    scheduler.step()
-
-
+    if epoch <= 100:
+        scheduler.step()
+    else:
+        scheduler2.step()
+logtxt(log_file_path, "======  Min  ===================")
+logtxt(log_file_path, "====  epoch ::: {} ===================".format(min_epoch))
+logtxt(log_file_path, "======  Min  ===================")
 

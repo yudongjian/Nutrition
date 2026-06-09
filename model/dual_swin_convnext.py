@@ -136,7 +136,7 @@ class Fusion_net_simple_point_cat4(nn.Module):
 
         rgb[3] = self.con4_1(rgb[3])  # 1536
         cat4 = torch.cat((rgb[3], depth[3]), dim=1)
-        cat4 = self.con4(clip[3]) + cat4 + 0.1 * points1   #
+        cat4 = self.con4(clip[3]) + cat4 + 0.01 * points1   #
         list = tuple((cat1, cat2, cat3, cat4))
 
         return list
